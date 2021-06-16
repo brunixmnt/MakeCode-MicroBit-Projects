@@ -1,9 +1,7 @@
 input.onButtonPressed(Button.A, function () {
-    powerfunctions.setSpeed(PowerFunctionsMotor.Red1, 3)
     powerfunctions.setSpeed(PowerFunctionsMotor.Red2, 3)
 })
 input.onButtonPressed(Button.B, function () {
-    powerfunctions.brake(PowerFunctionsMotor.Red1)
     powerfunctions.brake(PowerFunctionsMotor.Red2)
 })
 input.onLogoEvent(TouchButtonEvent.Touched, function () {
@@ -15,10 +13,9 @@ input.onLogoEvent(TouchButtonEvent.Touched, function () {
 })
 let USorIR = 0
 basic.showIcon(IconNames.Square)
-music.playTone(880, music.beat(BeatFraction.Half))
+music.playTone(262, music.beat(BeatFraction.Half))
 USorIR = 0
 powerfunctions.connectIrLed(AnalogPin.P0)
-powerfunctions.setMotorDirection(PowerFunctionsMotor.Red1, PowerFunctionsDirection.Left)
 powerfunctions.setMotorDirection(PowerFunctionsMotor.Red2, PowerFunctionsDirection.Left)
 basic.forever(function () {
     if (USorIR == 1) {
@@ -30,7 +27,7 @@ basic.forever(function () {
     } else {
         if (Math.round(grove.measureInCentimetersV2(DigitalPin.P2)) < 15) {
             basic.showIcon(IconNames.LeftTriangle)
-            music.playTone(349, music.beat(BeatFraction.Sixteenth))
+            music.playTone(262, music.beat(BeatFraction.Sixteenth))
         } else {
             basic.clearScreen()
         }
