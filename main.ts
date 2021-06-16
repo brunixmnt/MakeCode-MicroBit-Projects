@@ -1,12 +1,28 @@
 input.onLogoEvent(TouchButtonEvent.Touched, function () {
-    basic.showString("" + (Math.round(grove.measureInCentimetersV2(DigitalPin.P2))))
-    basic.pause(200)
+    if (USorIR == 0) {
+        USorIR = 1
+    } else {
+        USorIR = 0
+    }
 })
-basic.showIcon(IconNames.LeftTriangle)
-music.playTone(988, music.beat(BeatFraction.Half))
+let USorIR = 0
+basic.showIcon(IconNames.Square)
+music.playTone(880, music.beat(BeatFraction.Half))
+USorIR = 0
 basic.forever(function () {
-    if (input.buttonIsPressed(Button.A)) {
-        basic.showString("" + (Math.round(grove.measureInCentimetersV2(DigitalPin.P2))))
+    if (USorIR == 1) {
+        if (pins.digitalReadPin(DigitalPin.P1) == 1) {
+            basic.showIcon(IconNames.StickFigure)
+        } else {
+            basic.clearScreen()
+        }
+    } else {
+        if (Math.round(grove.measureInCentimetersV2(DigitalPin.P2)) < 15) {
+            basic.showIcon(IconNames.LeftTriangle)
+            music.playTone(349, music.beat(BeatFraction.Sixteenth))
+        } else {
+            basic.clearScreen()
+        }
     }
     basic.pause(200)
 })
