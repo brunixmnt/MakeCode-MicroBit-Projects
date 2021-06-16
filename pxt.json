@@ -1,11 +1,12 @@
 {
-    "name": "Grove Ultrasonic Ranger PIR Motion",
+    "name": "Grove Ultrasonic_Ranger_ PIR Motion IR_led",
     "description": "",
     "dependencies": {
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "Grove": "github:seeed-studio/pxt-grove#v0.5.0"
+        "Grove": "github:seeed-studio/pxt-grove#v0.5.0",
+        "powerfunctions": "github:philipphenkel/pxt-powerfunctions#v1.5.1"
     },
     "files": [
         "main.blocks",
